@@ -149,32 +149,4 @@ export class UtilityService {
   public getExtension(mimeType: string) {
     return mime.extension(mimeType);
   }
-
-  public storeImageToRoot(buffer: Buffer, path: string) {
-    fs.writeFileSync(path, buffer);
-  }
-
-  public fromMinuteToText(minute: number): string {
-    const hour = Math.floor(minute / 60);
-    const minuteLeft = minute % 60;
-    return `${hour}h ${minuteLeft}m`;
-  }
-
-  public calculateDateDifference(startDate: Date, endDate?: Date): string {
-    if (startDate) {
-      const start = new Date(startDate.toString());
-      const end = endDate ? new Date(endDate.toString()) : new Date();
-
-      let years = end.getFullYear() - start.getFullYear();
-      let months = end.getMonth() - start.getMonth();
-
-      if (months < 0) {
-        years--;
-        months += 12;
-      }
-
-      return `${years} yrs ${months} mos`;
-    }
-    return '';
-  }
 }
